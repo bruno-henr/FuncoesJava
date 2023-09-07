@@ -2,6 +2,7 @@ package ParadigmaFuncional;
 
 import java.util.Arrays;
 import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class Funcoes {
     public static void main(String[] args) {
@@ -18,10 +19,27 @@ public class Funcoes {
 //        f.gerar("Bruno henrique");
 //
 
-        Function<String, String> revertString = value -> new StringBuilder(value).reverse().toString();
-        System.out.println("Revertendo String: Bruno. \nEm = "+ revertString.apply("Bruno"));
-        Function<String, Integer> convertInInteger = str -> Integer.valueOf(str);
-        System.out.println("Convertendo a String 123 em numero:\nResultadp -> "+ convertInInteger.apply("123"));
+//        Function<String, String> revertString = value -> new StringBuilder(value).reverse().toString();
+//        System.out.println("Revertendo String: Bruno. \nEm = "+ revertString.apply("Bruno"));
+//        Function<String, Integer> convertInInteger = str -> Integer.valueOf(str);
+//        System.out.println("Convertendo a String 123 em numero:\nResultadp -> "+ convertInInteger.apply("123"));
+
+        Supplier<People> factory = People::new;
+        System.out.println(factory.get());
+    }
+
+
+}
+
+class People {
+    private String nome;
+    People() {
+        this.nome = "Bruno";
+    }
+
+    @Override
+    public String toString() {
+        return "People{ nome: "+this.nome+" }";
     }
 }
 /*
